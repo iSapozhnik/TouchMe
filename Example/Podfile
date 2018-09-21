@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'TouchMe_Example' do
+  pod 'TouchMe', :path => '../'
+
+  target 'TouchMe_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
