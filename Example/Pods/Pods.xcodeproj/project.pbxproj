@@ -16,7 +16,7 @@
 		D2B7530E73B9D4DC4BB641744D3444E3 /* Pods-TouchMe_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F159756DA49F04905340EA7B46E4A /* Pods-TouchMe_Tests-dummy.m */; };
 		D554107262E5433759C520F2E7264906 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		DD75EB743647ABDB9D564EAD66CFFAAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		FFA252A121555C670016608B /* ToucheMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA252A021555C670016608B /* ToucheMe.swift */; };
+		FFA252A121555C670016608B /* TouchMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA252A021555C670016608B /* TouchMe.swift */; };
 		FFA252A3215574090016608B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA252A2215574090016608B /* Error.swift */; };
 		FFA252A52155743C0016608B /* BiometricAuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA252A42155743C0016608B /* BiometricAuthenticationType.swift */; };
 /* End PBXBuildFile section */
@@ -63,7 +63,7 @@
 		E87771BADD9E2F09CA6519CC43D68CBC /* TouchMe-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TouchMe-umbrella.h"; sourceTree = "<group>"; };
 		F03FCE58AB0C0BFC9F4F353FA6D5D240 /* Pods-TouchMe_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TouchMe_Example-resources.sh"; sourceTree = "<group>"; };
 		FF82D07EC3353B2A895F91AFBFD9AED3 /* Pods-TouchMe_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TouchMe_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		FFA252A021555C670016608B /* ToucheMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToucheMe.swift; sourceTree = "<group>"; };
+		FFA252A021555C670016608B /* TouchMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMe.swift; sourceTree = "<group>"; };
 		FFA252A2215574090016608B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		FFA252A42155743C0016608B /* BiometricAuthenticationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthenticationType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +163,7 @@
 		CAFAC77223A5C15A3A7CBFCF15C92945 /* TouchMe */ = {
 			isa = PBXGroup;
 			children = (
-				FFA252A021555C670016608B /* ToucheMe.swift */,
+				FFA252A021555C670016608B /* TouchMe.swift */,
 				FFA252A42155743C0016608B /* BiometricAuthenticationType.swift */,
 				FFA252A2215574090016608B /* Error.swift */,
 				D4F41EDB19C6492B2870779F9CE3E5A1 /* Support Files */,
@@ -346,7 +346,7 @@
 				FFA252A3215574090016608B /* Error.swift in Sources */,
 				FFA252A52155743C0016608B /* BiometricAuthenticationType.swift in Sources */,
 				5B234A5CF19C94590BF498717AE53FDC /* TouchMe-dummy.m in Sources */,
-				FFA252A121555C670016608B /* ToucheMe.swift in Sources */,
+				FFA252A121555C670016608B /* TouchMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
