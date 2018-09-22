@@ -26,20 +26,13 @@ public protocol AuthenticationProtected {
     associatedtype Data
 
     var isDataAvailable: Bool { get }
-    var keyName: String { get }
 
     func saveData(data: Data, completion: (() -> Void)?)
     func getData(_ completion: (Data?) -> Void)
 }
 
-extension AuthenticationProtected {
-    public var keyName: String {
-        return "TouchMe." + String(describing: self)
-    }
-}
-
 // MARK: - Localization
-private struct DefaultLocalizable: BiometricLocalizable {
+private struct DefaultLocalization: BiometricLocalizable {
     var loginReason: String {
         return "Let me in!"
     }
@@ -93,7 +86,7 @@ public class BiometricAuthenticaticationProvider: BiometricAuthentication {
             }
         }
 
-        let localizable = self.localizable ?? DefaultLocalizable()
+        let localizable = self.localizable ?? DefaultLocalization()
         context.localizedFallbackTitle = localizable.localizedFallbackTitle
         if #available(iOS 10.0, *) {
             context.localizedCancelTitle = localizable.localizedCancelTitle

@@ -26,6 +26,10 @@ struct MyLocalization: BiometricLocalizable {
 class PinDefaultsAuthenticationProtected: AuthenticationProtected {
     typealias Data = String
 
+    private var keyName: String {
+        return "TouchMe." + String(describing: self)
+    }
+
     var isDataAvailable: Bool {
         return UserDefaults.standard.string(forKey: keyName) != nil ? true : false
     }
