@@ -1,0 +1,6 @@
+framework module TouchMe {
+  umbrella header "TouchMe-umbrella.h"
+
+  export *
+  module * { export * }
+}

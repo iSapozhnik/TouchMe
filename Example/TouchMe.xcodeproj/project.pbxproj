@@ -15,6 +15,9 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9E2BA179ADD9D4B449844083 /* Pods_TouchMe_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022CD75C2B9141BB080CD231 /* Pods_TouchMe_Tests.framework */; };
 		B799A19B019D5523283BDE3A /* Pods_TouchMe_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8318FF7B369657F71E9CDC9 /* Pods_TouchMe_Example.framework */; };
+		FF6BE13B21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6BE13A21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift */; };
+		FF6BE13F21569D0C0065504A /* PinAuthenticationProtectedWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6BE13E21569D0C0065504A /* PinAuthenticationProtectedWithData.swift */; };
+		FF6BE14121569D2E0065504A /* TouchMeLAContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6BE14021569D2E0065504A /* TouchMeLAContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,8 +33,8 @@
 /* Begin PBXFileReference section */
 		022CD75C2B9141BB080CD231 /* Pods_TouchMe_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchMe_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E7FC809EB9F0583DF22568 /* Pods-TouchMe_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchMe_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchMe_Example/Pods-TouchMe_Example.release.xcconfig"; sourceTree = "<group>"; };
-		2E2AAAB708B82317E9655E9E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		32C46476E11DBDB929D586C8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		2E2AAAB708B82317E9655E9E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		32C46476E11DBDB929D586C8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4CB9F6B8F19F8F0FAEC26380 /* Pods-TouchMe_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchMe_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchMe_Tests/Pods-TouchMe_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* TouchMe_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchMe_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,8 +48,11 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6DDA3CB8003C0D8173CF032D /* Pods-TouchMe_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchMe_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchMe_Example/Pods-TouchMe_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		885DA08498F795D294DD301C /* Pods-TouchMe_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchMe_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchMe_Tests/Pods-TouchMe_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		AAC41F3D79E0BCB6BB7B8259 /* TouchMe.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = TouchMe.podspec; path = ../TouchMe.podspec; sourceTree = "<group>"; };
+		AAC41F3D79E0BCB6BB7B8259 /* TouchMe.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TouchMe.podspec; path = ../TouchMe.podspec; sourceTree = "<group>"; };
 		D8318FF7B369657F71E9CDC9 /* Pods_TouchMe_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchMe_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF6BE13A21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAuthenticationProtectedWithoutData.swift; sourceTree = "<group>"; };
+		FF6BE13E21569D0C0065504A /* PinAuthenticationProtectedWithData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAuthenticationProtectedWithData.swift; sourceTree = "<group>"; };
+		FF6BE14021569D2E0065504A /* TouchMeLAContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMeLAContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				FF6BE13921569CA90065504A /* Mocks */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -157,6 +164,16 @@
 				4CB9F6B8F19F8F0FAEC26380 /* Pods-TouchMe_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FF6BE13921569CA90065504A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FF6BE13E21569D0C0065504A /* PinAuthenticationProtectedWithData.swift */,
+				FF6BE13A21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift */,
+				FF6BE14021569D2E0065504A /* TouchMeLAContext.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,7 +396,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6BE14121569D2E0065504A /* TouchMeLAContext.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				FF6BE13F21569D0C0065504A /* PinAuthenticationProtectedWithData.swift in Sources */,
+				FF6BE13B21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

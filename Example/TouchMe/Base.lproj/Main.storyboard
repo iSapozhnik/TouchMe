@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +20,51 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npf-W2-B4g">
+                                <rect key="frame" x="105.5" y="259.5" width="164" height="148"/>
+                                <state key="normal" image="touchID"/>
+                                <connections>
+                                    <action selector="touchId:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hVw-gZ-1KL"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ffg-Gs-RY0">
+                                <rect key="frame" x="107.5" y="149.5" width="160" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="k9R-zg-mrI"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCj-jB-qWJ">
+                                <rect key="frame" x="170.5" y="209.5" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="save:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hyM-Vg-lcO"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mCj-jB-qWJ" firstAttribute="centerX" secondItem="ffg-Gs-RY0" secondAttribute="centerX" id="1Rl-D4-x0L"/>
+                            <constraint firstItem="npf-W2-B4g" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="1lf-HK-Pfb"/>
+                            <constraint firstItem="npf-W2-B4g" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="FFa-cZ-Mev"/>
+                            <constraint firstItem="ffg-Gs-RY0" firstAttribute="centerX" secondItem="npf-W2-B4g" secondAttribute="centerX" id="PO1-Va-5wB"/>
+                            <constraint firstItem="mCj-jB-qWJ" firstAttribute="top" secondItem="ffg-Gs-RY0" secondAttribute="bottom" constant="30" id="cNq-l5-WjC"/>
+                            <constraint firstItem="npf-W2-B4g" firstAttribute="top" secondItem="ffg-Gs-RY0" secondAttribute="bottom" constant="80" id="eBW-l2-jjE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="ffg-Gs-RY0" id="ebn-Li-TJf"/>
+                        <outlet property="touchIDButton" destination="npf-W2-B4g" id="tbG-Ls-zDC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="touchID" width="164" height="148"/>
+    </resources>
 </document>
