@@ -18,6 +18,7 @@
 		FF6BE13B21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6BE13A21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift */; };
 		FF6BE13F21569D0C0065504A /* PinAuthenticationProtectedWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6BE13E21569D0C0065504A /* PinAuthenticationProtectedWithData.swift */; };
 		FF6BE14121569D2E0065504A /* TouchMeLAContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6BE14021569D2E0065504A /* TouchMeLAContext.swift */; };
+		FF6BE1432156D41A0065504A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6BE1422156D41A0065504A /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		FF6BE13A21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAuthenticationProtectedWithoutData.swift; sourceTree = "<group>"; };
 		FF6BE13E21569D0C0065504A /* PinAuthenticationProtectedWithData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAuthenticationProtectedWithData.swift; sourceTree = "<group>"; };
 		FF6BE14021569D2E0065504A /* TouchMeLAContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMeLAContext.swift; sourceTree = "<group>"; };
+		FF6BE1422156D41A0065504A /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				FF6BE13E21569D0C0065504A /* PinAuthenticationProtectedWithData.swift */,
 				FF6BE13A21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift */,
 				FF6BE14021569D2E0065504A /* TouchMeLAContext.swift */,
+				FF6BE1422156D41A0065504A /* Config.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 			files = (
 				FF6BE14121569D2E0065504A /* TouchMeLAContext.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				FF6BE1432156D41A0065504A /* Config.swift in Sources */,
 				FF6BE13F21569D0C0065504A /* PinAuthenticationProtectedWithData.swift in Sources */,
 				FF6BE13B21569CBE0065504A /* PinAuthenticationProtectedWithoutData.swift in Sources */,
 			);

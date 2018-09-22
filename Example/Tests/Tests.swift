@@ -15,7 +15,14 @@ class Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
+    // MARK: - Biometric Handler
+    func testBiometricHandler_biometricIDavailable() {
+        let biometricProvider = BiometricAuthenticaticationProvider(with: TouchMeLAContext())
+        let biometricHandler = BiometricHandler(authProvider: biometricProvider, authProtected: PinAuthenticationProtectedWithData())
+        XCTAssertTrue(biometricHandler.biometricIDAvailable, "BiometricHandler: biometricIDAvailable not available")
+    }
+
     func testBiometricHandler_protectedData_available() {
         let biometricProvider = BiometricAuthenticaticationProvider(with: TouchMeLAContext())
         let biometricHandler = BiometricHandler(authProvider: biometricProvider, authProtected: PinAuthenticationProtectedWithData())
@@ -26,6 +33,25 @@ class Tests: XCTestCase {
         let biometricProvider = BiometricAuthenticaticationProvider(with: TouchMeLAContext())
         let biometricHandler = BiometricHandler(authProvider: biometricProvider, authProtected: PinAuthenticationProtectedWithoutData())
         XCTAssert(!biometricHandler.protectedDataAvailable, "Pass")
+    }
+
+    func testBiometricHandler_protectedData_read() {
+        let expectation = XCTestExpectation(description: "BiometricHandler authenticateAndGetData")
+
+        let biometricProvider = BiometricAuthenticaticationProvider(with: TouchMeLAContext())
+        let biometricHandler = BiometricHandler(authProvider: biometricProvider, authProtected: PinAuthenticationProtectedWithData())
+        biometricHandler.authenticateAndGetData { result in
+            switch result {
+            case .success(let data):
+                expectation.fulfill()
+                XCTAssertTrue(data == Config.expectedPinString, "BiometricHandler: authenticateAndGetData returned \(data), expected \(Config.expectedPinString)")
+            default:
+                expectation.fulfill()
+                XCTFail("BiometricHandler: authenticateAndGetData error occured")
+            }
+        }
+
+        wait(for: [expectation], timeout: 1.0)
     }
 
     // MARK: - Biometric Provider

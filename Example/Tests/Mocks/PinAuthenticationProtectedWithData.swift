@@ -21,6 +21,6 @@ class PinAuthenticationProtectedWithData: AuthenticationProtected {
     }
 
     func getData(_ completion: (String?) -> Void) {
-        completion("1111")
+        completion(Config.expectedPinString)
     }
 }
