@@ -55,6 +55,31 @@ class Tests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
 
+    func testBiometricHandler_protectedData_read_error() {
+        let expectation = XCTestExpectation(description: "BiometricHandler authenticateAndGetData")
+
+        var biometricProvider: BiometricAuthentication
+        if #available(iOS 11.0, *) {
+            biometricProvider = BiometricAuthenticaticationProvider(with: TouchMeLAContext_notAvailable())
+        } else {
+            biometricProvider = BiometricAuthenticaticationProvider(with: TouchMeLAContext())
+        }
+        let pinProtected = PinAuthenticationProtectedWithData()
+        let biometricHandler = BiometricHandler<PinAuthenticationProtectedWithData>(authProvider: biometricProvider)
+        biometricHandler.authenticateAndGetData(with: pinProtected) { result in
+            switch result {
+            case .failure(let error):
+                expectation.fulfill()
+                XCTAssertTrue(error == BiometricError.noBiometricAvailable, "BiometricHandler: authenticateAndGetData should return an error")
+            default:
+                expectation.fulfill()
+                XCTFail("No error returned")
+            }
+        }
+
+        wait(for: [expectation], timeout: 1.0)
+    }
+
     // MARK: - Biometric Provider
     func testBiometricProvider_availableType_notAvailable() {
         if #available(iOS 11.0, *) {
