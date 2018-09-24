@@ -39,8 +39,9 @@ class Tests: XCTestCase {
         let expectation = XCTestExpectation(description: "BiometricHandler authenticateAndGetData")
 
         let biometricProvider = BiometricAuthenticaticationProvider(with: TouchMeLAContext())
-        let biometricHandler = BiometricHandler(authProvider: biometricProvider, authProtected: PinAuthenticationProtectedWithData())
-        biometricHandler.authenticateAndGetData { result in
+        let pinProtected = PinAuthenticationProtectedWithData()
+        let biometricHandler = BiometricHandler<PinAuthenticationProtectedWithData>(authProvider: biometricProvider)
+        biometricHandler.authenticateAndGetData(with: pinProtected) { result in
             switch result {
             case .success(let data):
                 expectation.fulfill()

@@ -50,14 +50,13 @@ class PinDefaultsAuthenticationProtected: AuthenticationProtected {
 
 class ViewController: UIViewController {
     var biometricHandler: BiometricHandler<PinDefaultsAuthenticationProtected>?
+    let pinProtected = PinDefaultsAuthenticationProtected()
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var touchIDButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let pinProtected = PinDefaultsAuthenticationProtected()
 
         biometricHandler = BiometricHandler(authProtected: pinProtected)
         biometricHandler?.localizable = MyLocalization()
@@ -66,10 +65,18 @@ class ViewController: UIViewController {
 
         print("Available Biometric type: \(biometricHandler?.biometricType.stringRepresentation)")
         print("Available data: \(biometricHandler?.protectedDataAvailable)")
+
+        let auth = BiometricAuthenticaticationProvider()
+        auth.localizable = MyLocalization()
+        auth.evaluatePolicy { error in
+            if error == nil {
+                print("Success")
+            }
+        }
     }
 
     @IBAction func save(_ sender: Any) {
-        biometricHandler?.authenticateAndSave(textField.text!, completion: { error in
+        biometricHandler?.authenticateAndSave(with: pinProtected, textField.text!, completion: { error in
             print("Error is \(error?.localizedDescription ?? "none")")
         })
     }
@@ -79,7 +86,7 @@ class ViewController: UIViewController {
     }
 
     private func authenticateAndGetData() {
-        biometricHandler?.authenticateAndGetData { [weak self] result in
+        biometricHandler?.authenticateAndGetData(with: pinProtected) { [weak self] result in
             switch result {
             case .success(let pin):
                 self?.textField.text = pin

@@ -123,27 +123,27 @@ public class BiometricHandler<T: AuthenticationProtected> {
         return authProvider.availableBiometricType
     }
     public var protectedDataAvailable: Bool {
-        return protectedData.isDataAvailable
+        return protectedData?.isDataAvailable ?? false
     }
 
     private var authProvider: BiometricAuthentication
-    private let protectedData: T
+    private var protectedData: T?
 
-    public init(authProvider: BiometricAuthentication? = nil, authProtected: T) {
+    public init(authProvider: BiometricAuthentication? = nil, authProtected: T? = nil) {
         self.authProvider = authProvider ?? BiometricAuthenticaticationProvider()
         self.protectedData = authProtected
     }
 
-    public func authenticateAndGetData(_ completion: @escaping (Result<T>) -> Void) {
+    public func authenticateAndGetData(with protectedData: T,_ completion: @escaping (Result<T>) -> Void) {
         guard biometricIDAvailable else {
             let result = Result<T>.failure(BiometricError.noBiometricAvailable)
             completion(result)
             return
         }
 
-        let handleEvaluation: BiometricCompletion = { [weak self] error in
+        let handleEvaluation: BiometricCompletion = { error in
             guard let error = error else {
-                self?.protectedData.getData { data in
+                protectedData.getData { data in
                     guard let data = data else {
                         completion(Result<T>.failure(BiometricError.cannotRetrieveData))
                         return
@@ -160,15 +160,15 @@ public class BiometricHandler<T: AuthenticationProtected> {
         authProvider.evaluatePolicy(handleEvaluation)
     }
 
-    public func authenticateAndSave(_ data: T.Data, completion: @escaping BiometricCompletion) {
+    public func authenticateAndSave(with protectedData: T,_ data: T.Data, completion: @escaping BiometricCompletion) {
         guard biometricIDAvailable else {
             completion(BiometricError.noBiometricAvailable)
             return
         }
 
-        let handleEvaluation: BiometricCompletion = { [weak self] error in
+        let handleEvaluation: BiometricCompletion = { error in
             guard let error = error else {
-                self?.protectedData.saveData(data: data, completion: {
+                protectedData.saveData(data: data, completion: {
                     completion(nil)
                 })
                 return
