@@ -20,6 +20,20 @@ it, simply add the following line to your Podfile:
 pod 'TouchMe'
 ```
 
+## FAQ
+1. *Q*: Ok, I just wand to know what type of biometric authentication Is available on my device. What can you offer?
+
+   *A: YES, for this you will need to work with `BiometricAuthenticaticationProvider`.*
+
+Example: 
+```swift
+let authProvider = BiometricAuthenticaticationProvider()
+print("Available biometric type is \(authProvider.availableBiometricType)")
+```
+2. Another item
+* Unordered sub-list. 
+
+
 ## Author
 
 isapozhnik, ivan.sapozhnik@sixt.com
@@ -27,3 +41,5 @@ isapozhnik, ivan.sapozhnik@sixt.com
 ## License
 
 TouchMe is available under the MIT license. See the LICENSE file for more info.
+
+

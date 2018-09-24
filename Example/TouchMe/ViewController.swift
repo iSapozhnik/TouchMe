@@ -76,7 +76,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func save(_ sender: Any) {
-        biometricHandler?.authenticateAndSave(with: pinProtected, textField.text!, completion: { error in
+        biometricHandler?.authenticateAndSaveData(with: pinProtected, textField.text!, completion: { error in
             print("Error is \(error?.localizedDescription ?? "none")")
         })
     }

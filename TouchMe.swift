@@ -135,48 +135,35 @@ public class BiometricHandler<T: AuthenticationProtected> {
     }
 
     public func authenticateAndGetData(with protectedData: T,_ completion: @escaping (Result<T>) -> Void) {
-        guard biometricIDAvailable else {
-            let result = Result<T>.failure(BiometricError.noBiometricAvailable)
-            completion(result)
-            return
-        }
-
-        let handleEvaluation: BiometricCompletion = { error in
-            guard let error = error else {
-                protectedData.getData { data in
-                    guard let data = data else {
-                        completion(Result<T>.failure(BiometricError.cannotRetrieveData))
-                        return
-                    }
-                    let result = Result<T>.success(data)
-                    completion(result)
-                }
+        authenticate { error in
+            guard error == nil else {
+                let result = Result<T>.failure(error!)
+                completion(result)
                 return
             }
-            let result = Result<T>.failure(error)
-            completion(result)
-        }
 
-        authProvider.evaluatePolicy(handleEvaluation)
+            protectedData.getData { data in
+                guard let data = data else {
+                    completion(Result<T>.failure(BiometricError.cannotRetrieveData))
+                    return
+                }
+                let result = Result<T>.success(data)
+                completion(result)
+            }
+        }
     }
 
-    public func authenticateAndSave(with protectedData: T,_ data: T.Data, completion: @escaping BiometricCompletion) {
-        guard biometricIDAvailable else {
-            completion(BiometricError.noBiometricAvailable)
-            return
-        }
-
-        let handleEvaluation: BiometricCompletion = { error in
-            guard let error = error else {
-                protectedData.saveData(data: data, completion: {
-                    completion(nil)
-                })
+    public func authenticateAndSaveData(with protectedData: T,_ data: T.Data, completion: @escaping BiometricCompletion) {
+        authenticate { error in
+            guard error == nil else {
+                completion(error)
                 return
             }
-            completion(error)
-        }
 
-        authProvider.evaluatePolicy(handleEvaluation)
+            protectedData.saveData(data: data, completion: {
+                completion(nil)
+            })
+        }
     }
 
     public func authenticate(completion: @escaping BiometricCompletion) {
