@@ -134,7 +134,7 @@ public class BiometricHandler<T: AuthenticationProtected> {
         self.protectedData = authProtected
     }
 
-    public func authenticateAndGetData(with protectedData: T,_ completion: @escaping (Result<T>) -> Void) {
+    public func authenticateAndGetData(with protectedData: T, _ completion: @escaping (Result<T>) -> Void) {
         authenticate { error in
             guard error == nil else {
                 let result = Result<T>.failure(error!)
