@@ -79,8 +79,8 @@ public class BiometricAuthenticaticationProvider: BiometricAuthentication {
             }
         }
 
-        let handleFailure: (Error?) -> Void = { evaluateError in
-            let error = evaluateError?.biometricError()
+        let handleFailure: (LAError) -> Void = { evaluateError in
+            let error = BiometricError.initWithError(evaluateError)
             DispatchQueue.main.async {
                 completion(error)
             }
@@ -92,12 +92,14 @@ public class BiometricAuthenticaticationProvider: BiometricAuthentication {
             context.localizedCancelTitle = localizable.localizedCancelTitle
         }
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizable.loginReason) { success, evaluateError in
-            guard success else {
-                handleFailure(evaluateError)
-                return
+            switch (success, evaluateError) {
+            case (true, nil):
+                handleSuccess()
+            case (false, let error as LAError):
+                handleFailure(error)
+            default:
+                break
             }
-
-            handleSuccess()
         }
     }
 }
