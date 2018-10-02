@@ -55,6 +55,16 @@ public class BiometricAuthenticaticationProvider: BiometricAuthentication {
     }
 
     private let context: LAContext
+    private var oldDomainState: String? {
+        set {
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: "touchme.domainstate")
+            defaults.synchronize()
+        }
+        get {
+            return UserDefaults.standard.string(forKey: "touchme.domainstate")
+        }
+    }
 
     public var availableBiometricType: BiometricAuthenticationType {
         if #available(iOS 11, *) {
@@ -74,6 +84,16 @@ public class BiometricAuthenticaticationProvider: BiometricAuthentication {
 
     public func evaluatePolicy(_ completion: @escaping BiometricCompletion) {
         let handleSuccess = {
+            let domainState = self.context.evaluatedPolicyDomainState?.base64EncodedString()
+            guard self.oldDomainState == nil || self.oldDomainState == domainState else {
+                DispatchQueue.main.async {
+                    completion(BiometricError.domainChanged)
+                }
+                return
+            }
+            if self.oldDomainState == nil {
+                self.oldDomainState = domainState
+            }
             DispatchQueue.main.async {
                 completion(nil)
             }
@@ -91,7 +111,7 @@ public class BiometricAuthenticaticationProvider: BiometricAuthentication {
         if #available(iOS 10.0, *) {
             context.localizedCancelTitle = localizable.localizedCancelTitle
         }
-        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizable.loginReason) { success, evaluateError in
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizable.loginReason) { [weak self] success, evaluateError in
             switch (success, evaluateError) {
             case (true, nil):
                 handleSuccess()
@@ -101,6 +121,16 @@ public class BiometricAuthenticaticationProvider: BiometricAuthentication {
                 break
             }
         }
+
+//        if let domainState = context.evaluatedPolicyDomainState?.base64EncodedString() {
+//            if domainState == oldDomainState {
+//                evaluate()
+//            } else {
+//                completion(BiometricError.domainChanged)
+//            }
+//        } else {
+//            evaluate()
+//        }
     }
 }
 

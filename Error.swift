@@ -19,6 +19,7 @@ public enum BiometricError: Error {
     case biometryNotEnrolled
     case biometryLockout
     case cannotRetrieveData
+    case domainChanged
     case unknown
 
     public static func initWithError(_ error: LAError) -> BiometricError {        
