@@ -41,9 +41,9 @@ class PinDefaultsAuthenticationProtected: AuthenticationProtected {
         completion?()
     }
 
-    func getData(_ completion: (String?) -> Void) {
+    func getData(_ completion: (String) -> Void) {
         let userDefault = UserDefaults.standard
-        let data = userDefault.value(forKey: keyName) as? Data
+        let data = userDefault.value(forKey: keyName) as! Data
         completion(data)
     }
 }

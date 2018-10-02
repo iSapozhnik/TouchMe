@@ -20,7 +20,7 @@ class PinAuthenticationProtectedWithoutData: AuthenticationProtected {
         completion?()
     }
 
-    func getData(_ completion: (String?) -> Void) {
-        completion(nil)
+    func getData(_ completion: (String) -> Void) {
+        completion("")
     }
 }

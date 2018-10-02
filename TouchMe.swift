@@ -28,7 +28,7 @@ public protocol AuthenticationProtected {
     var isDataAvailable: Bool { get }
 
     func saveData(data: Data, completion: (() -> Void)?)
-    func getData(_ completion: (Data?) -> Void)
+    func getData(_ completion: (Data) -> Void)
 }
 
 // MARK: - Localization
@@ -144,11 +144,12 @@ public class BiometricHandler<T: AuthenticationProtected> {
                 return
             }
 
+            guard protectedData.isDataAvailable else {
+                completion(Result<T>.failure(BiometricError.cannotRetrieveData))
+                return
+            }
+            
             protectedData.getData { data in
-                guard let data = data else {
-                    completion(Result<T>.failure(BiometricError.cannotRetrieveData))
-                    return
-                }
                 let result = Result<T>.success(data)
                 completion(result)
             }
