@@ -118,6 +118,44 @@ class Tests: XCTestCase {
     }
     */
 
+    func testErrorCodes() {
+        var code = -1
+        var error = BiometricError.initWithError(errorWithCode(code))
+        XCTAssert(error == .authenticationFailed, "Pass \(error)")
+
+        code -= 1
+        error = BiometricError.initWithError(errorWithCode(code))
+        XCTAssert(error == .userCancel, "Pass \(error)")
+
+        code -= 1
+        error = BiometricError.initWithError(errorWithCode(code))
+        XCTAssert(error == .userFallback, "Pass \(error)")
+
+        code -= 1
+        error = BiometricError.initWithError(errorWithCode(code))
+        XCTAssert(error == .systemCancel, "Pass \(error)")
+
+        code -= 1
+        error = BiometricError.initWithError(errorWithCode(code))
+        XCTAssert(error == .passcodeNotSet, "Pass \(error)")
+
+        code -= 1
+        error = BiometricError.initWithError(errorWithCode(code))
+        XCTAssert(error == .biometryNotAvailable, "Pass \(error)")
+
+        code -= 1
+        error = BiometricError.initWithError(errorWithCode(code))
+        XCTAssert(error == .biometryNotEnrolled, "Pass \(error)")
+
+        code -= 1
+        error = BiometricError.initWithError(errorWithCode(code))
+        XCTAssert(error == .biometryLockout, "Pass \(error)")
+    }
+
+    private func errorWithCode(_ code: Int) -> LAError {
+        return LAError.init(_nsError: NSError.init(domain: "domain", code: code, userInfo: nil))
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure() {
