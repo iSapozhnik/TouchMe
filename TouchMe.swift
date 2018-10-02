@@ -111,7 +111,7 @@ public class BiometricAuthenticaticationProvider: BiometricAuthentication {
         if #available(iOS 10.0, *) {
             context.localizedCancelTitle = localizable.localizedCancelTitle
         }
-        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizable.loginReason) { [weak self] success, evaluateError in
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizable.loginReason) { success, evaluateError in
             switch (success, evaluateError) {
             case (true, nil):
                 handleSuccess()
@@ -121,16 +121,6 @@ public class BiometricAuthenticaticationProvider: BiometricAuthentication {
                 break
             }
         }
-
-//        if let domainState = context.evaluatedPolicyDomainState?.base64EncodedString() {
-//            if domainState == oldDomainState {
-//                evaluate()
-//            } else {
-//                completion(BiometricError.domainChanged)
-//            }
-//        } else {
-//            evaluate()
-//        }
     }
 }
 

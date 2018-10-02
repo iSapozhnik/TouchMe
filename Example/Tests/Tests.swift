@@ -103,10 +103,15 @@ class Tests: XCTestCase {
     }
 
     func testBiometricProvider_evaluatePolicy_successful() {
+        let expectation = XCTestExpectation(description: "BiometricHandler evaluatePolicy_successful")
+
         let biometricProvider = BiometricAuthenticaticationProvider(with: TouchMeLAContext())
         biometricProvider.evaluatePolicy { error in
+            expectation.fulfill()
             XCTAssertTrue(error == nil, "biometricProvider evaluatePolicy failed with error \(error?.localizedDescription)")
         }
+        wait(for: [expectation], timeout: 1.0)
+
     }
 
     /* I need to find a proper way to mock errors :(
@@ -154,12 +159,5 @@ class Tests: XCTestCase {
 
     private func errorWithCode(_ code: Int) -> LAError {
         return LAError.init(_nsError: NSError.init(domain: "domain", code: code, userInfo: nil))
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure() {
-            // Put the code you want to measure the time of here.
-        }
     }
 }
