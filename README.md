@@ -30,8 +30,6 @@ Example:
 let authProvider = BiometricAuthenticaticationProvider()
 print("Available biometric type is \(authProvider.availableBiometricType)")
 ```
-2. Another item
-* Unordered sub-list. 
 
 
 ## Author
